@@ -81,38 +81,40 @@ import Row from "./Row";
 // sencond option
 // //////////////////////
 
-import React, { } from "react";
-
+import React, { Component } from "react";
 
 
 class Employee extends React.Component {
   constructor() {
     super();
     this.state = {
-      error: null,
-      list: ([])
+      list: {},
+      error: null
+      
     };
   }
 
   buildList = (data) => {
-    console.log(data + "data")
-    this.setState({list:data})
+    console.log('show me this', data)
+    this.setState({list:data.results})
   }
 
   componentDidMount() {
+    console.log('did Mount')
     fetch("https://randomuser.me/api/?results=50&nat=us")
-      .then(res => res.json())
+      .then(response => response.json())
       .then(this.buildList)
-      .catch()
+      .catch(error => {
+        this.setState({error});
+      })
       
   }
 
   render() {
-
+ console.log('render')
     return (
       <Container>
         <Row>
-
       <div>
         <ul>
           {
@@ -120,10 +122,12 @@ class Employee extends React.Component {
             <li>Sorry No Employees</li>
           }
         {this.state.list.length > 0 && 
-        this.state.list.map ((employee)=>(
+        this.state.list.map( (employee) => (
 
         <li key={employee.id.value} id={employee.id.value}>
-          {employee.location+" "+employee.email }
+          {/* {employee.location+" "+employee.results.email }
+           */}
+           {employee.gender}
         
         </li>
         ))
