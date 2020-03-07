@@ -1,17 +1,36 @@
 import React from "react";
+import Container from "./Container";
+import Row from "./Row";
+import Col from "./Col";
 
-function employeeDetail(props) {
+function Employeedetail(props) {
   return (
-    <div className="container">
-      <img alt={props.name} className="img-fluid" src={props.src} style={{ margin: "0 auto" }} />
-      <h3>Name: {props.name}</h3>
-      <h3>Gender: {props.gender}</h3>
-      <h3>Location: {props.location}</h3>
-      <h5>Email: {props.email} </h5>
-      <h5>Phone: {props.phone}</h5>
-      <h5>BirthDay: {props.dob}</h5>
-    </div>
+
+    <Container>
+      <Row>
+        <Col size="md-12">
+          <Row>
+            <Col size="md-2">
+              First test Name : {this.props.FirstName}
+            </Col>
+            <Col size="md-2">
+
+            </Col>
+            <Col size="md-2"></Col>
+            <Col size="md-2"></Col>
+            <Col size="md-2"></Col>
+            <Col size="md-2"></Col>
+          </Row>
+
+        </Col>
+
+      </Row>
+
+    </Container>
+
+
+
   );
 }
 
-export default employeeDetail;
+export default Employeedetail;
