@@ -1,13 +1,12 @@
-
+import React, { Component } from "react";
 import Container from "./Container";
 import Row from "./Row";
 import Col from "./Col";
-import Employeedetail from "./employee-details";
+import Employeedetail from "./employeeDetails/employee-details";
+import "../components/employeeDetails/style.css"
 
 // sencond option
 // //////////////////////
-
-import React, { Component } from "react";
 
 
 class Employee extends React.Component {
@@ -54,18 +53,15 @@ class Employee extends React.Component {
                 this.state.list.map((employee) => (
 
                   <li key={employee.id.value} id={employee.id.value}>
-                    <Employeedetail>
+                    <Employeedetail
                     FirstName={employee.name.first}
-                    MiddleName={employee.name.last}
+                    LastName={employee.name.last}
                     Email ={employee.email}
                     pictureSrc = {employee.picture.thumbnail}
-
-
-                    </Employeedetail>
-                    
-                    {employee.gender}
-                    
-
+                    gender={employee.gender}
+                    location={employee.location.city} 
+                    DOB = {employee.dob.date.toLocaleString().split(/\D/).slice(0,3).map(num=>num.padStart(2,"0")).join("-")}
+                    />
                   </li>
                 ))
               }
